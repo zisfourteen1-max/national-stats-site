@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NusaData — Indonesia dalam Angka</title>
+<meta name="description" content="NusaData: angka-angka penting Indonesia — penduduk, ekonomi, pekerjaan, harga, dan daerah — lengkap dengan sumber dan tahunnya.">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#/ringkasan">Nusa<span>Data</span></a>
+    <p class="tagline">Indonesia dalam angka — setiap angka ada sumber dan tahunnya.</p>
+  </div>
+  <nav class="main-nav" aria-label="Bagian utama">
+    <a href="#/ringkasan" data-nav="ringkasan">Ringkasan</a>
+    <a href="#/penduduk" data-nav="penduduk">Penduduk</a>
+    <a href="#/ekonomi" data-nav="ekonomi">Ekonomi</a>
+    <a href="#/pekerjaan" data-nav="pekerjaan">Pekerjaan &amp; Harga</a>
+    <a href="#/daerah" data-nav="daerah">Daerah</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ============ RINGKASAN ============ -->
+  <section class="page" id="page-ringkasan" data-page="ringkasan">
+    <p class="crumb">Beranda / <b>Ringkasan</b></p>
+    <h1>Indonesia dalam angka</h1>
+    <p class="lede">Lima angka yang paling sering dicari tentang Indonesia, lalu
+      peta ekonominya: sektor apa yang paling besar menyumbang PDB.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-label">Jumlah penduduk</div>
+        <div class="kpi-value">285,72 jt</div>
+        <div class="kpi-unit">jiwa · peringkat 4 dunia</div>
+        <div class="kpi-source">Sumber: Bank Dunia (WDI), 2025</div>
+      </div>
+      <div class="kpi amber">
+        <div class="kpi-label">PDB</div>
+        <div class="kpi-value">US$1.445,6 M</div>
+        <div class="kpi-unit">miliar dolar AS</div>
+        <div class="kpi-source">Sumber: Bank Dunia (WDI), 2025</div>
+      </div>
+      <div class="kpi navy">
+        <div class="kpi-label">Pertumbuhan ekonomi</div>
+        <div class="kpi-value">5,1%</div>
+        <div class="kpi-unit">tahun 2025 (2024: 5,03%)</div>
+        <div class="kpi-source">Sumber: BPS, 2025</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Tingkat kemiskinan</div>
+        <div class="kpi-value">8,25%</div>
+        <div class="kpi-unit">penduduk</div>
+        <div class="kpi-source">Sumber: BPS, September 2025</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2 style="margin-top:0">PDB menurut lapangan usaha</h2>
+          <p>Pangsa tiap sektor terhadap PDB, Triwulan IV 2025.</p>
+        </div>
+        <div class="seg" role="group" aria-label="Jenis grafik sektor">
+          <button type="button" data-chart-toggle="sector" data-mode="bar" aria-pressed="true">Batang</button>
+          <button type="button" data-chart-toggle="sector" data-mode="line" aria-pressed="false">Garis</button>
+        </div>
+      </div>
+      <canvas class="chart" id="chart-sectors" aria-label="Grafik batang pangsa sektor terhadap PDB"></canvas>
+      <p class="source"><b>Sumber: BPS, Triwulan IV 2025.</b> “Sektor lain” adalah sisa
+        dari lima sektor yang dirinci. Industri pengolahan tetap sektor terbesar.</p>
+    </div>
+
+    <div class="callout"><b>Cara baca situs ini:</b> setiap angka ditemani sumber dan
+      tahunnya. Klik bagian di atas untuk pindah topik, pakai kotak cari di bawah
+      untuk menemukan indikator, dan tekan tombol “Batang / Garis” untuk mengubah
+      bentuk grafik.</div>
+
+    <h2>Cari indikator</h2>
+    <p class="section-note">Ketik kata kunci — misalnya “pengangguran”, “inflasi”,
+      atau “penduduk” — daftar di bawah langsung menyaring.</p>
+    <div class="controls">
+      <label for="search-indicators">Cari indikator</label>
+      <input class="search" id="search-indicators" type="search"
+        placeholder="Contoh: pengangguran, PDB, kemiskinan…" autocomplete="off">
+    </div>
+    <ul class="indicator-list" id="indicator-list"></ul>
+    <p class="empty-note" id="search-empty" hidden>Tidak ada indikator yang cocok. Coba kata lain.</p>
+  </section>
+
+  <!-- ============ PENDUDUK ============ -->
+  <section class="page" id="page-penduduk" data-page="penduduk" hidden>
+    <p class="crumb">Beranda / <b>Penduduk</b></p>
+    <h1>Penduduk Indonesia</h1>
+    <p class="lede">285,72 juta jiwa pada 2025 — negara keempat terpadat di dunia.
+      Pilih indikator di bawah untuk melihat angka, sumber, dan artinya.</p>
+
+    <div class="controls" role="group" aria-label="Pilih indikator penduduk">
+      <label>Indikator:</label>
+      <div class="seg" id="pop-switcher">
+        <button type="button" data-pop="penduduk" aria-pressed="true">Jumlah</button>
+        <button type="button" data-pop="pertumbuhan-penduduk" aria-pressed="false">Pertumbuhan</button>
+        <button type="button" data-pop="kepadatan" aria-pressed="false">Kepadatan</button>
+        <button type="button" data-pop="harapan-hidup" aria-pressed="false">Harapan hidup</button>
+        <button type="button" data-pop="fertilitas" aria-pressed="false">Fertilitas</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2 style="margin-top:0" id="pop-title">Jumlah penduduk</h2>
+      <div class="kpi-value" id="pop-value" style="font-size:52px">285,72 jt</div>
+      <div class="kpi-unit" id="pop-unit">jiwa</div>
+      <p class="section-note" id="pop-note">Peringkat 4 dari 217 negara.</p>
+      <p class="source"><b id="pop-source">Sumber: Bank Dunia (WDI), 2025</b></p>
+    </div>
+
+    <h2>Angka-angka penduduk lainnya</h2>
+    <div class="kpi-grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="kpi">
+        <div class="kpi-label">Angka kelahiran kasar</div>
+        <div class="kpi-value">15,8</div>
+        <div class="kpi-unit">per 1.000 penduduk</div>
+        <div class="kpi-source">Sumber: Bank Dunia (WDI), 2024</div>
+      </div>
+      <div class="kpi amber">
+        <div class="kpi-label">Angka kematian kasar</div>
+        <div class="kpi-value">7,6</div>
+        <div class="kpi-unit">per 1.000 penduduk</div>
+        <div class="kpi-source">Sumber: Bank Dunia (WDI), 2024</div>
+      </div>
+    </div>
+    <div class="callout"><b>Artinya:</b> kelahiran (15,8 per 1.000) masih dua kali
+      lipat kematian (7,6 per 1.000), jadi penduduk terus bertambah — tapi
+      lajunya melambat, hanya 0,78% pada 2025.</div>
+  </section>
+
+  <!-- ============ EKONOMI ============ -->
+  <section class="page" id="page-ekonomi" data-page="ekonomi" hidden>
+    <p class="crumb">Beranda / <b>Ekonomi</b></p>
+    <h1>Ekonomi Indonesia</h1>
+    <p class="lede">PDB US$1.445,6 miliar pada 2025 dengan pertumbuhan 5,1%.
+      Pilih tahun untuk melihat pertumbuhan tahun itu, dan ubah bentuk grafiknya.</p>
+
+    <div class="controls" role="group" aria-label="Pilih tahun pertumbuhan">
+      <label>Tahun:</label>
+      <div class="seg" id="year-switcher">
+        <button type="button" data-year="2024" aria-pressed="false">2024</button>
+        <button type="button" data-year="2025" aria-pressed="true">2025</button>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-label">PDB (harga berlaku)</div>
+        <div class="kpi-value">US$1.445,6 M</div>
+        <div class="kpi-unit">miliar dolar AS</div>
+        <div class="kpi-source">Sumber: Bank Dunia (WDI), 2025</div>
+      </div>
+      <div class="kpi amber">
+        <div class="kpi-label">PDB per kapita</div>
+        <div class="kpi-value">US$5.060</div>
+        <div class="kpi-unit">dolar AS</div>
+        <div class="kpi-source">Sumber: Bank Dunia (WDI), 2025</div>
+      </div>
+      <div class="kpi navy">
+        <div class="kpi-label">PDB per kapita (PPP)</div>
+        <div class="kpi-value">US$17.660</div>
+        <div class="kpi-unit">dolar AS, daya beli</div>
+        <div class="kpi-source">Sumber: Bank Dunia (WDI), 2025</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Pertumbuhan (<span id="growth-year-label">2025</span>)</div>
+        <div class="kpi-value" id="growth-value">5,1%</div>
+        <div class="kpi-unit" id="growth-note">Triwulan IV 2025: 5,39% y-on-y</div>
+        <div class="kpi-source">Sumber: BPS, 2025</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div>
+          <h2 style="margin-top:0">Pertumbuhan ekonomi 2024 → 2025</h2>
+          <p>Persentase tumbuh PDB dari tahun ke tahun.</p>
+        </div>
+        <div class="seg" role="group" aria-label="Jenis grafik pertumbuhan">
+          <button type="button" data-chart-toggle="growth" data-mode="line" aria-pressed="true">Garis</button>
+          <button type="button" data-chart-toggle="growth" data-mode="bar" aria-pressed="false">Batang</button>
+        </div>
+      </div>
+      <canvas class="chart short" id="chart-growth" aria-label="Grafik pertumbuhan ekonomi 2024 dan 2025"></canvas>
+      <p class="source"><b>Sumber: BPS, 2025.</b> 2024 tumbuh 5,03%; 2025 tumbuh 5,1%
+        (c-to-c 5,11%); Triwulan IV 2025 tumbuh 5,39% y-on-y.</p>
+    </div>
+
+    <div class="kpi-grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="kpi">
+        <div class="kpi-label">Inflasi (harga konsumen)</div>
+        <div class="kpi-value">1,9%</div>
+        <div class="kpi-unit">per tahun</div>
+        <div class="kpi-source">Sumber: Bank Dunia (WDI), 2025</div>
+      </div>
+      <div class="kpi amber">
+        <div class="kpi-label">Indeks Gini</div>
+        <div class="kpi-value">34,4</div>
+        <div class="kpi-unit">skala 0–100</div>
+        <div class="kpi-source">Sumber: Bank Dunia (WDI), 2025</div>
+      </div>
+    </div>
+    <div class="callout"><b>Artinya:</b> ekonomi tumbuh di atas 5% dua tahun
+      berturut-turut dengan inflasi yang rendah (1,9%). Gini 34,4 menandakan
+      ketimpangan pendapatan yang sedang — 0 berarti semua merata.</div>
+  </section>
+
+  <!-- ============ PEKERJAAN & HARGA ============ -->
+  <section class="page" id="page-pekerjaan" data-page="pekerjaan" hidden>
+    <p class="crumb">Beranda / <b>Pekerjaan &amp; Harga</b></p>
+    <h1>Pekerjaan &amp; Harga</h1>
+    <p class="lede">Siapa yang bekerja, berapa yang menganggur menurut BPS,
+      dan berapa rupiah batas garis kemiskinan.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-label">Angkatan kerja</div>
+        <div class="kpi-value">155,27 jt</div>
+        <div class="kpi-unit">jiwa</div>
+        <div class="kpi-source">Sumber: BPS, November 2025</div>
+      </div>
+      <div class="kpi amber">
+        <div class="kpi-label">Penduduk bekerja</div>
+        <div class="kpi-value">147,91 jt</div>
+        <div class="kpi-unit">jiwa</div>
+        <div class="kpi-source">Sumber: BPS, November 2025</div>
+      </div>
+      <div class="kpi navy">
+        <div class="kpi-label">Pengangguran terbuka (TPT)</div>
+        <div class="kpi-value">4,74%</div>
+        <div class="kpi-unit">7,35 jt jiwa menganggur</div>
+        <div class="kpi-source">Sumber: BPS, November 2025</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Tingkat kemiskinan</div>
+        <div class="kpi-value">8,25%</div>
+        <div class="kpi-unit">penduduk</div>
+        <div class="kpi-source">Sumber: BPS, September 2025</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2 style="margin-top:0">Garis kemiskinan: Rp609.160 per kapita/bulan</h2>
+      <p>Orang dikategorikan miskin bila pengeluarannya di bawah garis ini
+        (Maret 2025). Donat menunjukkan porsi makanan dan non-makanan.</p>
+      <canvas class="chart short" id="chart-poverty" aria-label="Donat garis kemiskinan: makanan dan non-makanan"></canvas>
+      <p class="source"><b>Sumber: BPS, Maret 2025.</b> Makanan Rp454.299 +
+        non-makanan Rp154.861 = Rp609.160 per kapita per bulan.</p>
+    </div>
+
+    <h2>Ringkasan pasar kerja &amp; harga</h2>
+    <p class="section-note">Klik judul kolom untuk mengurutkan tabel.</p>
+    <div class="table-wrap">
+      <table class="data" id="labour-table">
+        <thead>
+          <tr>
+            <th><button type="button" class="sort" data-sort="label" data-table="labour">Indikator</button></th>
+            <th class="num"><button type="button" class="sort" data-sort="value" data-table="labour">Nilai</button></th>
+            <th><button type="button" class="sort" data-sort="source" data-table="labour">Sumber</button></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="source"><b>Catatan definisi:</b> angka pengangguran di halaman ini
+      memakai definisi BPS (TPT 4,74%, Nov 2025). Estimasi model ILO sebesar
+      3,2% (2025) memakai definisi berbeda dan tidak dicampur di sini.
+      Angkatan kerja model ILO 2025: 147,1 juta jiwa.</p>
+  </section>
+
+  <!-- ============ DAERAH ============ -->
+  <section class="page" id="page-daerah" data-page="daerah" hidden>
+    <p class="crumb">Beranda / <b>Daerah</b></p>
+    <h1>Daerah: upah &amp; pengeluaran</h1>
+    <p class="lede">Upah minimum provinsi 2026 dan pengeluaran per kapita
+      di kota-kota dengan belanja tertinggi. Klik judul kolom untuk mengurutkan,
+      ketik di kotak cari untuk menyaring.</p>
+
+    <h2>Upah Minimum Provinsi (UMP) 2026</h2>
+    <div class="controls">
+      <label for="search-ump">Cari provinsi</label>
+      <input class="search" id="search-ump" type="search"
+        placeholder="Contoh: Jakarta, Bali…" autocomplete="off">
+    </div>
+    <div class="table-wrap">
+      <table class="data" id="ump-table">
+        <thead>
+          <tr>
+            <th><button type="button" class="sort" data-sort="province" data-table="ump">Provinsi</button></th>
+            <th class="num"><button type="button" class="sort" data-sort="ump" data-table="ump">UMP 2026</button></th>
+            <th class="num"><button type="button" class="sort" data-sort="change" data-table="ump">Naik vs 2025</button></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="source"><b>Sumber: Pemprov DKI / PP 49/2025, UMP 2026.</b>
+      Jakarta tertinggi (Rp5.729.876, naik 6,17% dari Rp5.396.761 pada 2025);
+      Jawa Barat terendah (Rp2.317.601). Hanya provinsi yang angkanya
+      terverifikasi yang ditampilkan.</p>
+
+    <h2>Pengeluaran per kapita per bulan</h2>
+    <div class="table-wrap">
+      <table class="data" id="spending-table">
+        <thead>
+          <tr>
+            <th><button type="button" class="sort" data-sort="place" data-table="spending">Wilayah</button></th>
+            <th class="num"><button type="button" class="sort" data-sort="value" data-table="spending">Pengeluaran/bulan</button></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="source"><b>Sumber: BPS 2025 (via GoodStats).</b> Rata-rata nasional
+      Rp1,57 juta/bulan (makanan Rp776 ribu + non-makanan Rp794 ribu).
+      Susenas September 2025: Rp1.584.473 (makanan Rp804.430, non-makanan
+      Rp780.042).</p>
+    <div class="callout"><b>Artinya:</b> warga Jakarta Selatan membelanjakan
+      Rp3,64 juta per bulan — lebih dari dua kali rata-rata nasional
+      Rp1,57 juta. Jurang antar-daerah ini yang membuat UMP berbeda-beda.</div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <b>NusaData — Indonesia dalam Angka.</b> Situs ini dibuat untuk keperluan
+    edukasi, bukan situs resmi instansi mana pun. Semua angka disertai sumber
+    dan tahunnya: Bank Dunia (WDI) dan BPS. Angka yang belum terverifikasi
+    tidak ditampilkan.
+  </div>
+</footer>
+
+<script type="module" src="./app.js"></script>
+</body>
+</html>

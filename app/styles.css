@@ -1,0 +1,327 @@
+/* NusaData — styles.css
+   Palet sendiri: navy #12395e, teal #0e8a7b, amber hangat #e8a33d,
+   di atas putih dan abu terang. Bukan palet instansi mana pun.
+   Tipografi sistem, angka besar, kontras tinggi. */
+
+:root {
+  --navy: #12395e;
+  --navy-dark: #0c2a46;
+  --teal: #0e8a7b;
+  --teal-dark: #0a6b5f;
+  --amber: #e8a33d;
+  --amber-soft: #fdf3dd;
+  --ink: #1c2b3a;
+  --muted: #4a5b6b;
+  --line: #d8e0e8;
+  --bg: #ffffff;
+  --bg-soft: #f2f6f8;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.55;
+  font-size: 17px;
+}
+
+/* ---- Header & nav ---- */
+.site-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 18px 0 0;
+}
+.header-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.brand {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #fff;
+  text-decoration: none;
+}
+.brand span { color: var(--amber); }
+.tagline {
+  color: #b9cfe0;
+  font-size: 15px;
+  margin: 0;
+}
+.main-nav {
+  max-width: 1080px;
+  margin: 14px auto 0;
+  padding: 0 20px;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.main-nav a {
+  color: #cfe0ee;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 10px 14px;
+  border-radius: 10px 10px 0 0;
+}
+.main-nav a:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+.main-nav a.active {
+  color: var(--navy);
+  background: #fff;
+}
+
+/* ---- Layout ---- */
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 26px 20px 60px;
+}
+.page[hidden] { display: none; }
+
+.crumb {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+.crumb b { color: var(--navy); }
+
+h1 {
+  font-size: 34px;
+  line-height: 1.15;
+  margin: 0 0 8px;
+  color: var(--navy);
+  letter-spacing: -0.5px;
+}
+.lede {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 720px;
+  margin: 0 0 22px;
+}
+h2 {
+  font-size: 24px;
+  color: var(--navy);
+  margin: 34px 0 6px;
+}
+h3 {
+  font-size: 19px;
+  color: var(--navy);
+  margin: 0 0 4px;
+}
+.section-note {
+  color: var(--muted);
+  margin: 0 0 16px;
+  max-width: 760px;
+}
+.source {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+.source b { color: var(--navy); }
+
+/* ---- KPI cards ---- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 18px 0;
+}
+.kpi {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--teal);
+  border-radius: var(--radius);
+  padding: 16px 16px 12px;
+}
+.kpi.amber { border-top-color: var(--amber); }
+.kpi.navy { border-top-color: var(--navy); }
+.kpi-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.kpi-value {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.15;
+  margin: 6px 0 2px;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+.kpi-unit { font-size: 15px; color: var(--muted); }
+.kpi-source { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+/* ---- Panels & charts ---- */
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 16px 0;
+}
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.panel-head p { margin: 2px 0 0; color: var(--muted); }
+canvas.chart {
+  display: block;
+  width: 100%;
+  height: 300px;
+  margin-top: 10px;
+}
+canvas.chart.short { height: 240px; }
+
+/* ---- Controls ---- */
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+.controls label { font-weight: 700; color: var(--navy); }
+.seg { display: inline-flex; border: 2px solid var(--navy); border-radius: 999px; overflow: hidden; }
+.seg button {
+  border: 0;
+  background: #fff;
+  color: var(--navy);
+  font: inherit;
+  font-weight: 700;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.seg button[aria-pressed="true"] { background: var(--navy); color: #fff; }
+.seg button:hover { background: var(--amber-soft); }
+.seg button[aria-pressed="true"]:hover { background: var(--navy); }
+
+.search {
+  font: inherit;
+  padding: 10px 14px;
+  border: 2px solid var(--navy);
+  border-radius: 999px;
+  min-width: 260px;
+}
+.search:focus { outline: 3px solid var(--amber); outline-offset: 1px; }
+
+/* ---- Indicator list ---- */
+.indicator-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.indicator-list li {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: #fff;
+}
+.indicator-list li[hidden] { display: none; }
+.indicator-list .name { font-weight: 700; color: var(--navy); font-size: 17px; }
+.indicator-list .val { font-size: 26px; font-weight: 800; color: var(--teal-dark); margin: 2px 0; }
+.indicator-list .val small { font-size: 15px; font-weight: 600; color: var(--muted); }
+.indicator-list .note { font-size: 14px; color: var(--muted); margin: 0; }
+.empty-note { color: var(--muted); font-style: italic; }
+
+/* ---- Tables ---- */
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 17px;
+}
+table.data th, table.data td {
+  text-align: left;
+  padding: 11px 10px;
+  border-bottom: 1px solid var(--line);
+}
+table.data th {
+  background: var(--navy);
+  color: #fff;
+  font-size: 15px;
+}
+table.data th:first-child { border-radius: 10px 0 0 0; }
+table.data th:last-child { border-radius: 0 10px 0 0; }
+table.data td.num, table.data th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.data tbody tr:nth-child(even) { background: var(--bg-soft); }
+table.data tbody tr:hover { background: var(--amber-soft); }
+th button.sort {
+  all: unset;
+  cursor: pointer;
+  font: inherit;
+  color: #fff;
+  font-weight: 700;
+}
+th button.sort::after { content: " ↕"; color: var(--amber); }
+.table-wrap { overflow-x: auto; }
+
+/* ---- Highlight box ---- */
+.callout {
+  background: var(--amber-soft);
+  border-left: 6px solid var(--amber);
+  border-radius: 0 12px 12px 0;
+  padding: 14px 18px;
+  margin: 18px 0;
+  font-size: 17px;
+}
+.callout b { color: var(--navy); }
+
+/* ---- Footer ---- */
+.site-footer {
+  background: var(--navy-dark);
+  color: #b9cfe0;
+  padding: 26px 20px 34px;
+  font-size: 15px;
+}
+.site-footer .inner { max-width: 1080px; margin: 0 auto; }
+.site-footer b { color: #fff; }
+.site-footer a { color: var(--amber); }
+
+/* ---- Mode tangkapan layar (?shot=...) ----
+   Tata letak ringkas supaya satu halaman muat dalam 1280x720.
+   Isi sama; hanya jarak dirapatkan dan paragraf pembuka disembunyikan. */
+html[data-shot] .lede { display: none; }
+html[data-shot] .kpi { padding: 10px 14px 8px; }
+html[data-shot] .kpi-value { font-size: 27px; }
+html[data-shot] .kpi-grid { margin: 10px 0; }
+html[data-shot] .panel { margin: 10px 0; padding: 14px 20px; }
+html[data-shot="cover"] canvas.chart { height: 250px; }
+html[data-shot="ekonomi"] canvas.chart { height: 250px; }
+html[data-shot="pekerjaan"] canvas.chart { height: 220px; }
+
+/* ---- Phone ---- */
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  h1 { font-size: 27px; }
+  .brand { font-size: 25px; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .kpi-value { font-size: 27px; }
+  .indicator-list { grid-template-columns: 1fr; }
+  .main-nav { gap: 2px; }
+  .main-nav a { padding: 9px 10px; font-size: 15px; }
+  canvas.chart { height: 260px; }
+  .search { min-width: 0; width: 100%; }
+  .panel { padding: 14px; }
+  table.data { font-size: 15px; }
+  table.data th, table.data td { padding: 9px 6px; }
+}
